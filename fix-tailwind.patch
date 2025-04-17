@@ -1,0 +1,45 @@
+*** Begin Patch
+*** Add File: postcss.config.js
++/** @type {import('postcss').Config} */
++module.exports = {
++  plugins: {
++    tailwindcss: {},
++    autoprefixer: {},
++  },
++}
+*** End Patch
+*** Begin Patch
+*** Update File: tailwind.config.ts
+@@
+- import type { Config } from 'tailwindcss'
++import type { Config } from 'tailwindcss'
+
+ const config: Config = {
+-  content: [],
++  content: [
++    './app/**/*.{js,ts,jsx,tsx}',
++    './components/**/*.{js,ts,jsx,tsx}',
++    './src/**/*.{js,ts,jsx,tsx}',
++    './styles/**/*.{css}',
++  ],
+   theme: {
+     extend: {},
+   },
+   plugins: [],
+ }
+
+ export default config
+*** End Patch
+*** Begin Patch
+*** Add File: styles/global.css
++@tailwind base;
++@tailwind components;
++@tailwind utilities;
+*** End Patch
+*** Begin Patch
+*** Update File: app/layout.tsx
+@@
+-import '../src/styles/globals.css'
++import '../styles/global.css'
+*** End Patch
+
